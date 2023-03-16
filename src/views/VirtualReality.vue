@@ -1,159 +1,186 @@
 <template>
-  <div class="mt-3">
-    <navbar
-      :minNav="navbarMinimize"
-      :toggle="toggleConfigurator"
-      :class="`${
-        this.$store.state.isNavFixed ? this.$store.state.navbarFixed_class : ''} ${this.$store.state.isNavFixed ? 'bg-white' : 'bg-success'}`
-      "
-    />
-  </div>
-  <div
-    class="mx-3 mt-4 border-radius-xl position-relative"
-    :style="{
-      backgroundImage: 'url(' + require('@/assets/img/vr-bg.jpg') + ')',
-      backgroundSize: 'cover'
-    }"
-  >
-    <sidenav :custom_class="this.$store.state.mcolor" :class="isTransparent" class="fixed-start" />
-    <main class="mt-1 main-content border-radius-lg">
-      <div class="section min-vh-85 position-relative transform-scale-0 transform-scale-md-7">
-        <div class="container-fluid">
-          <div class="pt-10 row">
-            <div class="pt-5 text-center col-lg-1 col-md-1 pt-lg-0 ms-lg-5">
-              <a
-                href="javascript:;"
-                class="border-0 avatar avatar-md d-block"
-                data-bs-toggle="tooltip"
-                data-bs-placement="left"
-                title="My Profile"
-              >
-                <img class="border-radius-lg" alt="Image placeholder" src="@/assets/img/team-1.jpg" />
-              </a>
-              <button
-                class="p-2 mt-2 btn btn-white border-radius-lg d-block"
-                type="button"
-                data-bs-toggle="tooltip"
-                data-bs-placement="left"
-                title="Home"
-              >
-                <i class="p-2 fas fa-home"></i>
-              </button>
-              <button
-                class="p-2 btn btn-white border-radius-lg d-block"
-                type="button"
-                data-bs-toggle="tooltip"
-                data-bs-placement="left"
-                title="Search"
-              >
-                <i class="p-2 fas fa-search"></i>
-              </button>
-              <button
-                class="p-2 btn btn-white border-radius-lg d-block"
-                type="button"
-                data-bs-toggle="tooltip"
-                data-bs-placement="left"
-                title="Minimize"
-              >
-                <i class="p-2 fas fa-ellipsis-h"></i>
-              </button>
-            </div>
-            <div class="col-lg-8 col-md-11">
-              <div class="d-flex">
-                <div class="me-auto">
-                  <h1 class="mb-0 display-1 font-weight-bold mt-n4">12°C</h1>
-                  <h6 class="mb-0 text-uppercase ms-1">Cloudy</h6>
-                </div>
-                <div class="ms-auto">
-                  <img
-                    class="w-50 float-end mt-lg-n4"
-                    src="@/assets/img/small-logos/icon-sun-cloud.png"
-                    alt="image sun"
-                  />
-                </div>
-              </div>
-              <div class="mt-4 row">
-                <div class="col-lg-4 col-md-4">
-                  <card-calendar />
-                </div>
-                <div class="mt-4 col-lg-4 col-md-4 mt-sm-0">
-                  <card-to-do />
-                  <card-email />
-                </div>
-                <div class="mt-4 col-lg-4 col-md-4 mt-sm-0">
-                  <card-player />
-                  <card-message />
-                </div>
-              </div>
+  <div class="py-4 container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header pb-0">
+            <h6>评教页面</h6>
+          </div>
+          <div class="card-body px-0 pt-0 pb-2">
+            <div class="table-responsive p-0">
+              <table class="table align-items-center mb-0">
+                <thead>
+                  <tr>
+                    <th
+                      class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
+                    >
+                      课程名
+                    </th>
+                    <th
+                      class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2"
+                    >
+                      学分
+                    </th>
+                    <th
+                      class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
+                    >
+                      授课方式
+                    </th>
+                    <th
+                      class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
+                    >
+                      课程编号
+                    </th>
+                    <th
+                      class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
+                    ></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <div class="d-flex px-2 py-1">
+                        <div class="d-flex flex-column justify-content-center">
+                          <h6 class="mb-0 text-sm">移动软件开发</h6>
+                          <p class="text-xs text-secondary mb-0">
+                            授课教师：西门庆
+                          </p>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <h6 class="mb-0 text-sm">2</h6>
+                    </td>
+                    <td class="align-middle text-center text-sm">
+                      <span class="badge badge-sm bg-gradient-success"
+                        >线下授课</span
+                      >
+                    </td>
+                    <td class="align-middle text-center">
+                      <span class="text-secondary text-xs font-weight-bold"
+                        >231</span
+                      >
+                    </td>
+                    <td class="align-middle text-center">
+                      <commentForm></commentForm>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="d-flex px-2 py-1">
+                        <div class="d-flex flex-column justify-content-center">
+                          <h6 class="mb-0 text-sm">JAVAEE</h6>
+                          <p class="text-xs text-secondary mb-0">
+                            授课教师：刘兆涵
+                          </p>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <h6 class="mb-0 text-sm">1.5</h6>
+                    </td>
+                    <td class="align-middle text-center text-sm">
+                      <span class="badge badge-sm bg-gradient-info"
+                        >网上授课</span
+                      >
+                    </td>
+                    <td class="align-middle text-center">
+                      <span class="text-secondary text-xs font-weight-bold"
+                        >222</span
+                      >
+                    </td>
+                    <td class="align-middle text-center">
+                      <commentForm></commentForm>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="d-flex px-2 py-1">
+                        <div class="d-flex flex-column justify-content-center">
+                          <h6 class="mb-0 text-sm">C++软件开发</h6>
+                          <p class="text-xs text-secondary mb-0">
+                            授课教师：西门庆
+                          </p>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <h6 class="mb-0 text-sm">2</h6>
+                    </td>
+                    <td class="align-middle text-center text-sm">
+                      <span class="badge badge-sm bg-gradient-success"
+                        >线下授课</span
+                      >
+                    </td>
+                    <td class="align-middle text-center">
+                      <span class="text-secondary text-xs font-weight-bold"
+                        >231</span
+                      >
+                    </td>
+                    <td class="align-middle text-center">
+                      <commentForm></commentForm>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
       </div>
-    </main>
+    </div>
   </div>
-  <app-footer class="py-3 bg-white border-radius-lg" />
+
 </template>
 
 <script>
-import Sidenav from "@/examples/Sidenav";
-import AppFooter from "@/examples/Footer.vue";
-import Navbar from "@/examples/Navbars/Navbar.vue";
-import CardCalendar from "./components/CardCalendar.vue";
-import CardEmail from "./components/CardEmail.vue";
-import CardToDo from "./components/CardToDo.vue";
-import CardPlayer from "./components/CardPlayer.vue";
-import CardMessage from "./components/CardMessage.vue";
-import setTooltip from "@/assets/js/tooltip.js";
 
-const body = document.getElementsByTagName("body")[0];
+import PublicTable from "./components/PublicCourseTable.vue";
+import argonButton from "../components/ArgonButton.vue";
+import argonInput from "../components/ArgonInput.vue";
+import { reactive, ref } from "vue";
+import { ElDrawer, ElMessageBox } from "element-plus";
+import commentForm from "./components/CourseCommentText.vue"
 
-import { mapMutations } from "vuex";
+import ArgonInput from "../components/ArgonInput.vue";
 
 export default {
-  name: "virtual-reality",
+  name: "tables",
   components: {
-    AppFooter,
-    Sidenav,
-    Navbar,
-    CardCalendar,
-    CardEmail,
-    CardToDo,
-    CardPlayer,
-    CardMessage,
-  },
-  mounted() {
-    setTooltip();
-  },
-  methods: {
-    ...mapMutations(["navbarMinimize", "toggleConfigurator"]),
-  },
-  beforeMount() {
-    this.$store.state.layout = "vr";
-    this.$store.state.showNavbar = false;
-    this.$store.state.showSidenav = false;
-    this.$store.state.showFooter = false;
-    body.classList.add("virtual-reality");
-    this.$store.state.isTransparent = "bg-white";
-  },
-  beforeUnmount() {
-    this.$store.state.layout = "default";
-    this.$store.state.showNavbar = true;
-    this.$store.state.showSidenav = true;
-    this.$store.state.showFooter = true;
-    body.classList.remove("virtual-reality");
-
-    if (this.$store.state.isPinned === false) {
-      const sidenav_show = document.querySelector(".g-sidenav-show");
-      sidenav_show.classList.remove("g-sidenav-hidden");
-      sidenav_show.classList.add("g-sidenav-pinned");
-      this.$store.state.isPinned = true;
-    }
-    this.$store.state.isTransparent = "bg-transparent";
-  },
-  computed: {
-    isTransparent() {
-      return this.$store.state.isTransparent;
-    },
+    ElDrawer,
+    commentForm,
+    PublicTable,
+    argonButton,
+    argonInput
+},
+  data() {
+    return {
+      dialog: true,
+      stats: {
+        formLabelWidth: "80px",
+        titleColor: "opacity-7 text-white",
+        descColor: "text-white",
+        trip: {
+          title: "Today's Trip",
+          desc: "145 KM",
+          classIcon: "text-dark ni ni-money-coins",
+        },
+        health: {
+          title: "Battery Health",
+          desc: "99 %",
+          classIcon: "text-dark ni ni-controller ",
+        },
+        speed: {
+          title: "Average Speed",
+          desc: "56 Km/h",
+          classIcon: "text-dark ni ni-delivery-fast",
+        },
+        volume: {
+          title: "Music Volume",
+          desc: "15/100",
+          classIcon: "text-dark ni ni-note-03",
+        },
+      },
+    };
   },
 };
 </script>

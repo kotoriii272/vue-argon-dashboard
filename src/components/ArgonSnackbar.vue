@@ -1,18 +1,17 @@
 <template>
   <div class="toast fade show p-2 mt-2" :class="getColor(color)">
     <div class="toast-header bg-transparent border-0">
-      <i class="me-2" :class="getIcon(icon, iconColor)" />
       <span class="me-auto font-weight-bold" :class="getTextColor(color)">
         {{
         title
         }}
       </span>
+      
+      
+    </div>
+    <hr class="horizontal dark m-0" :class="getHrColor(color)" />
+    <div class="toast-header bg-transparent border-0">
       <small :class="getTextColor(color)">{{ date }}</small>
-      <i
-        class="fas fa-times text-md ms-3 cursor-pointer"
-        :class="getTextColor(color)"
-        @click="closeHandler"
-      />
     </div>
     <hr class="horizontal dark m-0" :class="getHrColor(color)" />
     <div class="toast-body" :class="getTextColor(color)">{{ description }}</div>
@@ -51,7 +50,7 @@ export default {
     },
     getIcon: (icon, iconColor) =>
       icon && iconColor ? `${icon} text-${iconColor}` : null,
-    getTextColor: (color) => (color === "white" ? "text-dark" : "text-white"),
+    getTextColor: (color) => ("text-dark"),
     getHrColor: (color) => (color === "white" ? "dark" : "light"),
   },
 };

@@ -10,7 +10,8 @@
         :class="getClasses(size, valid)"
         :name="name"
         :id="id"
-        :value="value"
+        @input='childInputChange'
+        v-model="value"
         :placeholder="placeholder"
         :isRequired="isRequired"
       />
@@ -42,7 +43,15 @@ export default {
     type: String,
     isRequired: Boolean,
   },
+  watch:{
+    value(){
+        this.childValue = this.value //监听父组件的数据，同步更新子组件数据
+    }
+   },
   methods: {
+    childInputChange(){
+      this.$emit('getChildData',{value: this.childValue, name:this.name});
+    },
     getClasses: (size, valid) => {
       let sizeValue, isValidValue;
 

@@ -7,12 +7,25 @@ import RTL from "../views/Rtl.vue";
 import Profile from "../views/Profile.vue";
 import Signup from "../views/Signup.vue";
 import Signin from "../views/Signin.vue";
+import TeacherDashboard from "../views/TeacherDashboard.vue";
+import ClassArrange from "../views/ClassArrange.vue"
+import AssessResult from "../views/AssessResult.vue"
 
 const routes = [
   {
     path: "/",
     name: "/",
-    redirect: "/dashboard-default",
+    redirect: "/signin",
+  },
+  {
+    path: "/teacher-dashboard",
+    name: "TeacherDashboard",
+    component: TeacherDashboard,
+  },
+  {
+    path: "/assessResult",
+    name: "assessResult",
+    component: AssessResult,
   },
   {
     path: "/dashboard-default",
@@ -48,6 +61,11 @@ const routes = [
     path: "/signin",
     name: "Signin",
     component: Signin,
+  },
+  {
+    path: "/classArrange",
+    name: "classArrange",
+    component: ClassArrange,
   },
   {
     path: "/signup",

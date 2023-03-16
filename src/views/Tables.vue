@@ -7,7 +7,7 @@
     </div>
     <div class="mt-4 row">
       <div class="col-12">
-        <projects-table />
+        <PublicTable />
       </div>
     </div>
   </div>
@@ -15,13 +15,13 @@
 
 <script>
 import AuthorsTable from "./components/AuthorsTable.vue";
-import ProjectsTable from "./components/ProjectsTable.vue";
+import PublicTable from "./components/PublicCourseTable.vue";
 
 export default {
   name: "tables",
   components: {
     AuthorsTable,
-    ProjectsTable
+    PublicTable
   },
   data() {
     return {

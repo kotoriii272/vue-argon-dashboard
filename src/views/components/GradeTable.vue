@@ -1,0 +1,135 @@
+<template>
+    <div class="card">
+      <div class="card-header pb-0">
+        <h6>所有课程成绩</h6>
+      </div>
+      <div class="card-body px-0 pt-0 pb-2">
+        <div class="table-responsive p-0">
+          <table class="table align-items-center mb-0">
+            <thead>
+              <tr>
+                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">课程名</th>
+                <th
+                  class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2"
+                >学分</th>
+                <th
+                  class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
+                >授课方式</th>
+                <th
+                  class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
+                >课程编号</th>
+                <th
+                  class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
+                >成绩</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <div class="d-flex px-2 py-1">
+                    <div class="d-flex flex-column justify-content-center">
+                      <h6 class="mb-0 text-sm">移动软件开发</h6>
+                      <p class="text-xs text-secondary mb-0">授课教师：西门庆</p>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <h6 class="mb-0 text-sm">2</h6>
+                </td>
+                <td class="align-middle text-center text-sm">
+                  <span class="badge badge-sm bg-gradient-success">线下授课</span>
+                </td>
+                <td class="align-middle text-center">
+                  <span class="text-secondary text-xs font-weight-bold">231</span>
+                </td>
+                <td class="align-middle text-center">
+                  <span class="text-secondary text-xs font-weight-bold">87/100</span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="d-flex px-2 py-1">
+                    <div class="d-flex flex-column justify-content-center">
+                      <h6 class="mb-0 text-sm">JAVAEE</h6>
+                      <p class="text-xs text-secondary mb-0">授课教师：刘兆涵</p>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <h6 class="mb-0 text-sm">1.5</h6>
+                </td>
+                <td class="align-middle text-center text-sm">
+                  <span class="badge badge-sm bg-gradient-info">网上授课</span>
+                </td>
+                <td class="align-middle text-center">
+                  <span class="text-secondary text-xs font-weight-bold">222</span>
+                </td>
+                <td class="align-middle text-center">
+                  <span class="text-secondary text-xs font-weight-bold">87/100</span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="d-flex px-2 py-1">
+                    <div class="d-flex flex-column justify-content-center">
+                      <h6 class="mb-0 text-sm">C++软件开发</h6>
+                      <p class="text-xs text-secondary mb-0">授课教师：西门庆</p>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <h6 class="mb-0 text-sm">2</h6>
+                </td>
+                <td class="align-middle text-center text-sm">
+                  <span class="badge badge-sm bg-gradient-success">线下授课</span>
+                </td>
+                <td class="align-middle text-center">
+                  <span class="text-secondary text-xs font-weight-bold">231</span>
+                </td>
+                <td class="align-middle text-center">
+                  <span class="text-secondary text-xs font-weight-bold">87/100</span>
+                </td>
+              </tr>
+              
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </template>
+  
+  <script>
+  import axios from "axios";
+
+  export default {
+    name: "public-class-table",
+    mounted() {
+
+      axios({
+        method: "post", //指定请求方式
+        url: "http://localhost:8080/admin/login", //请求接口（相对接口，后面会介绍到）
+        
+        params: {
+          username: "admin",
+          password: "123",
+          rememberMe: false,
+          code: "1",
+        },
+      });
+
+
+      var userInfo = this.$store.userInfo['0'];
+
+      axios({
+        method: "post", //指定请求方式
+        url: "http://localhost:8080/selAllExam?page=1&limit=10&sid=1302", //请求接口（相对接口，后面会介绍到）
+        
+      }).then((e) => {
+          
+        console.log(e.data)
+          
+      });
+    }
+  };
+  </script>
+  

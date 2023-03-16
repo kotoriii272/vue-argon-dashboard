@@ -1,7 +1,18 @@
 <template>
   <div class="card">
     <div class="card-header pb-0 px-3">
-      <h6 class="mb-0">Billing Information</h6>
+      <h6 class="mb-0">教师授课管理</h6>
+    </div>
+    <div class="card-header pb-0 px-3">
+      <el-select v-model="value" class="m-2" placeholder="选择系部" size="large">
+        <el-option
+          v-for="item in options"
+          :key="item.value"
+          :label="item.label"
+          :value="item.value"
+        />
+      </el-select>
+
     </div>
     <div class="card-body pt-4 p-3">
       <ul class="list-group">

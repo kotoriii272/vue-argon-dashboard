@@ -1,71 +1,177 @@
 <template>
   <div class="py-4 container-fluid">
     <div class="row">
+      
       <div class="col-lg-12">
         <div class="row">
-          <div class="col-lg-3 col-md-6 col-12">
-            <card
-              :title="stats.money.title"
-              :value="stats.money.value"
-              :percentage="stats.money.percentage"
-              :iconClass="stats.money.iconClass"
-              :iconBackground="stats.money.iconBackground"
-              :detail="stats.money.detail"
-              directionReverse
-            ></card>
-          </div>
-          <div class="col-lg-3 col-md-6 col-12">
-            <card
-              :title="stats.users.title"
-              :value="stats.users.value"
-              :percentage="stats.users.percentage"
-              :iconClass="stats.users.iconClass"
-              :iconBackground="stats.users.iconBackground"
-              :detail="stats.users.detail"
-              directionReverse
-            ></card>
-          </div>
-          <div class="col-lg-3 col-md-6 col-12">
-            <card
-              :title="stats.clients.title"
-              :value="stats.clients.value"
-              :percentage="stats.clients.percentage"
-              :iconClass="stats.clients.iconClass"
-              :iconBackground="stats.clients.iconBackground"
-              :percentageColor="stats.clients.percentageColor"
-              :detail="stats.clients.detail"
-              directionReverse
-            ></card>
-          </div>
-          <div class="col-lg-3 col-md-6 col-12">
-            <card
-              :title="stats.sales.title"
-              :value="stats.sales.value"
-              :percentage="stats.sales.percentage"
-              :iconClass="stats.sales.iconClass"
-              :iconBackground="stats.sales.iconBackground"
-              :detail="stats.sales.detail"
-              directionReverse
-            ></card>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-7 mb-lg">
-            <!-- line chart -->
-            <div class="card z-index-2">
-              <gradient-line-chart />
+          <div class="py-4 widget-calendar card container-fluid">
+            <div class="row">
+              <div class="my-col">
+                <span>周一</span>
+              </div>
+              <div class="my-col">
+                <span>周二</span>
+              </div>
+              <div class="my-col">
+                <span>周三</span>
+              </div>
+              <div class="my-col ">
+                <span>周四</span>
+              </div>
+              <div class="my-col ">
+                <span>周五</span>
+              </div>
+              <div class="my-col ">
+                <span>周六</span>
+              </div>
+              <div class="my-col ">
+                <span>周日</span>
+              </div>
+            </div>
+            <hr class="horizontal dark m-0" :class="dark" />
+            <div class="row mt-2">
+              <div class="my-col">
+              </div>
+              <div class="my-col"><argon-snackbar
+                title="高等数学"
+                date="上课地点：4015"
+                description="上课周数：1-11周"
+                :icon="{ component: 'ni ni-check-bold', color: 'white' }"
+                color="success"
+              /></div>
+              <div class="my-col"></div>
+              <div class="my-col"></div>
+              <div class="my-col"><argon-snackbar
+                title="高等数学"
+                date="上课地点：4015"
+                description="上课周数：1-11周"
+                :icon="{ component: 'ni ni-check-bold', color: 'white' }"
+                color="success"
+              /></div>
+              <div class="my-col"></div>
+            </div>
+            
+            <div class="row mt-2">
+              <div class="my-col"><argon-snackbar
+                title="线性代数"
+                date="上课地点：1103"
+                description="上课周数：1-15周"
+                :icon="{ component: 'ni ni-check-bold', color: 'white' }"
+                color="success"
+              />
+              </div>
+              <div class="my-col"></div>
+              <div class="my-col"></div>
+              <div class="my-col"><argon-snackbar
+                title="线性代数"
+                date="上课地点：1103"
+                description="上课周数：1-15周"
+                :icon="{ component: 'ni ni-check-bold', color: 'white' }"
+                color="success"
+              /></div>
+              <div class="my-col"></div>
+              <div class="my-col"><argon-snackbar
+                title="微电子学"
+                date="上课地点：4015"
+                description="上课周数：1-11周"
+                :icon="{ component: 'ni ni-check-bold', color: 'white' }"
+                color="success"
+              /></div>
+            </div>
+            <div class="row mt-2">
+              <div class="my-col">
+              </div>
+              <div class="my-col"><argon-snackbar
+                title="体育（羽毛球）"
+                date="上课地点：网球场"
+                description="上课周数：1-13周"
+                :icon="{ component: 'ni ni-check-bold', color: 'white' }"
+                color="success"
+              /></div>
+              <div class="my-col"><argon-snackbar
+                title="JAVAEE"
+                date="上课地点：1102"
+                description="上课周数：1-8周"
+                :icon="{ component: 'ni ni-check-bold', color: 'white' }"
+                color="success"
+              /></div>
+              <div class="my-col"></div>
+              <div class="my-col"><argon-snackbar
+                title="大学英语"
+                date="上课地点：4015"
+                description="上课周数：1-11周"
+                :icon="{ component: 'ni ni-check-bold', color: 'white' }"
+                color="success"
+              /></div>
+              <div class="my-col"></div>
+            </div>
+            <div class="row mt-2">
+              <div class="my-col"><argon-snackbar
+                title="职业教育"
+                date="上课地点：1402"
+                description="上课周数：8-11周"
+                :icon="{ component: 'ni ni-check-bold', color: 'white' }"
+                color="success"
+              />
+              </div>
+              <div class="my-col"></div>
+              <div class="my-col"></div>
+              <div class="my-col"></div>
+              <div class="my-col"><argon-snackbar
+                title="高等数学"
+                date="上课地点：4015"
+                description="上课周数：1-11周"
+                :icon="{ component: 'ni ni-check-bold', color: 'white' }"
+                color="success"
+              /></div>
+              <div class="my-col"><argon-snackbar
+                title="高等数学"
+                date="上课地点：4015"
+                description="上课周数：1-11周"
+                :icon="{ component: 'ni ni-check-bold', color: 'white' }"
+                color="success"
+              /></div>
+            </div>
+            <div class="row mt-2">
+              <div class="my-col">
+              </div>
+              <div class="my-col"><argon-snackbar
+                title="高等数学"
+                date="上课地点：4015"
+                description="上课周数：1-11周"
+                :icon="{ component: 'ni ni-check-bold', color: 'white' }"
+                color="success"
+              /></div>
+              <div class="my-col"></div>
+              <div class="my-col"></div>
+              <div class="my-col"><argon-snackbar
+                title="高等数学"
+                date="上课地点：4015"
+                description="上课周数：1-11周"
+                :icon="{ component: 'ni ni-check-bold', color: 'white' }"
+                color="success"
+              /></div>
+              <div class="my-col"></div>
+              <div class="my-col"><argon-snackbar
+                title="高等数学"
+                date="上课地点：4015"
+                description="上课周数：1-11周"
+                :icon="{ component: 'ni ni-check-bold', color: 'white' }"
+                color="success"
+              /></div>
             </div>
           </div>
-          <div class="col-lg-5">
-            <carousel />
-          </div>
         </div>
+        
+        
+
+
         <div class="row mt-4">
-          <div class="col-lg-7 mb-lg-0 mb-4">
+          <div class="col-12">
             <div class="card">
               <div class="p-3 pb-0 card-header">
                 <div class="d-flex justify-content-between">
-                  <h6 class="mb-2">Sales by Country</h6>
+                  <h6 class="mb-2">本学期课程</h6>
                 </div>
               </div>
               <div class="table-responsive">
@@ -74,30 +180,28 @@
                     <tr v-for="(sale, index) in sales" :key="index">
                       <td class="w-30">
                         <div class="px-2 py-1 d-flex align-items-center">
-                          <div>
-                            <img :src="sale.flag" alt="Country flag" />
-                          </div>
+                          
                           <div class="ms-4">
-                            <p class="mb-0 text-xs font-weight-bold">Country:</p>
+                            <p class="mb-0 text-xs font-weight-bold">课程名:</p>
                             <h6 class="mb-0 text-sm">{{ sale.country }}</h6>
                           </div>
                         </div>
                       </td>
                       <td>
                         <div class="text-center">
-                          <p class="mb-0 text-xs font-weight-bold">Sales:</p>
+                          <p class="mb-0 text-xs font-weight-bold">学分:</p>
                           <h6 class="mb-0 text-sm">{{ sale.sales }}</h6>
                         </div>
                       </td>
                       <td>
                         <div class="text-center">
-                          <p class="mb-0 text-xs font-weight-bold">Value:</p>
+                          <p class="mb-0 text-xs font-weight-bold">教师:</p>
                           <h6 class="mb-0 text-sm">{{ sale.value }}</h6>
                         </div>
                       </td>
                       <td class="text-sm align-middle">
                         <div class="text-center col">
-                          <p class="mb-0 text-xs font-weight-bold">Bounce:</p>
+                          <p class="mb-0 text-xs font-weight-bold">课程编号:</p>
                           <h6 class="mb-0 text-sm">{{ sale.bounce }}</h6>
                         </div>
                       </td>
@@ -107,19 +211,28 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-5">
-            <categories-card />
-          </div>
         </div>
       </div>
     </div>
   </div>
 </template>
+
+
+<style scoped>
+.my-col {
+/* width: 14.27%; */
+width: 14.2857%;
+}
+</style>
+
 <script>
 import Card from "@/examples/Cards/Card.vue";
 import GradientLineChart from "@/examples/Charts/GradientLineChart.vue";
 import Carousel from "./components/Carousel.vue";
 import CategoriesCard from "./components/CategoriesCard.vue";
+import MiniPlayerCard from "@/views/components/CardPlayer.vue"; 
+import DefaultInfoCard from "@/examples/Cards/DefaultInfoCard.vue"; 
+import ArgonSnackbar from "@/components/ArgonSnackbar.vue";
 
 import US from "@/assets/img/icons/flags/US.png";
 import DE from "@/assets/img/icons/flags/DE.png";
@@ -132,9 +245,9 @@ export default {
     return {
       stats: {
         money: {
-          title: "Today's Money",
-          value: "$53,000",
-          percentage: "+55%",
+          title: "高等数学",
+          value: "高亮",
+          percentage: "3",
           iconClass: "ni ni-money-coins",
           detail: "since yesterday",
           iconBackground: "bg-gradient-primary",
@@ -167,41 +280,50 @@ export default {
       },
       sales: {
         us: {
-          country: "United States",
-          sales: 2500,
-          value: "$230,900",
-          bounce: "29.9%",
+          country: "高等数学",
+          sales: 3,
+          value: "高亮",
+          bounce: "1",
           flag: US,
         },
         germany: {
-          country: "Germany",
-          sales: "3.900",
-          value: "$440,000",
-          bounce: "40.22%",
+          country: "线性代数",
+          sales: 2,
+          value: "张杰",
+          bounce: "2",
           flag: DE,
         },
         britain: {
-          country: "Great Britain",
-          sales: "1.400",
-          value: "$190,700",
-          bounce: "23.44%",
+          country: "微观电路",
+          sales: 1.5,
+          value: "强结",
+          bounce: "3",
           flag: GB,
         },
         brasil: {
-          country: "Brasil",
-          sales: "562",
-          value: "$143,960",
-          bounce: "32.14%",
+          country: "职业教育",
+          sales: 2,
+          value: "青航",
+          bounce: "4",
           flag: BR,
-        },
+        }
       },
     };
   },
+  mounted: function(){
+    
+  },
+  methods:{
+    
+  },
   components: {
+    DefaultInfoCard,
+    MiniPlayerCard,
     Card,
     GradientLineChart,
     Carousel,
     CategoriesCard,
+    ArgonSnackbar
   },
 };
 </script>

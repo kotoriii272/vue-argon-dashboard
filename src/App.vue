@@ -81,6 +81,7 @@ export default {
   },
   beforeMount() {
     this.$store.state.isTransparent = "bg-transparent";
+    this.$store.state.mcolor = `card-background-mask-success`;
   }
 };
 </script>
