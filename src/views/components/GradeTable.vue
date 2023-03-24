@@ -126,7 +126,6 @@
         
       }).then((e) => {
           
-        console.log(e.data)
           
       });
     }

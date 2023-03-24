@@ -1,5 +1,5 @@
 <template>
-  <div class="card h-300" style="overflow-y: scroll; height: 750px">
+  <div class="card h-300" style="overflow-y: scroll; height: 750px" v-loading="isLoading">
     <div class="card-header pb-0 px-3">
       <h5 class="mb-0">教师授课管理</h5>
     </div>
@@ -74,91 +74,20 @@
               </el-popover>
             </div>
             <div class="mt-3" style="align-items: left">
-              <!-- <el-button text @click="dialogFormVisible = true">
-                open a Table nested Dialog
-              </el-button>
-              <el-dialog v-model="dialogFormVisible" title="Shipping address">
-                <el-form :model="form">
-                  <el-form-item
-                    label="Promotion name"
-                    :label-width="formLabelWidth"
-                  >
-                    <el-input v-model="form.name" autocomplete="off" />
-                  </el-form-item>
-                  <el-form-item label="Zones" :label-width="formLabelWidth">
-                    <el-select
-                      v-model="form.region"
-                      placeholder="Please select a zone"
-                    >
-                      <el-option label="Zone No.1" value="shanghai" />
-                      <el-option label="Zone No.2" value="beijing" />
-                    </el-select>
-                  </el-form-item>
-                </el-form>
-              </el-dialog> -->
-
-              <!-- <el-button text @click="dialog = true"
-                >Open Drawer with nested form
-              </el-button>
-              <el-drawer
-                ref="drawerRef"
-                v-model="dialog"
-                title="I have a nested form inside!"
-                :before-close="handleClose"
-                direction="rtl"
-                class="demo-drawer"
-                size="50%"
-              >
-                <div class="demo-drawer__content">
-                  <el-form>
-                    <el-form-item label="Name" :label_height="formLabelWidth" :label-width="formLabelWidth">
-                      <el-input autocomplete="off" />
-                    </el-form-item>
-                    <el-form-item label="Area" :label-width="formLabelWidth">
-                      <el-select
-                        placeholder="Please select activity area"
-                      >
-                        <el-option label="Area1" value="shanghai" />
-                        <el-option label="Area2" value="beijing" />
-                      </el-select>
-                    </el-form-item>
-                  </el-form>
-                  <div class="demo-drawer__footer">
-                    <el-button >Cancel</el-button>
-                    <el-button
-                      type="primary"
-                      :loading="loading"
-                      >{{ loading ? "Submitting ..." : "Submit" }}</el-button
-                    >
-                  </div>
-                </div>
-              </el-drawer> -->
+             
 
               <el-popover placement="right" :width="400" :visible="popoverShowControl[tch]">
                 <template #reference>
                   <el-button style="margin-right: 16px" @click="popoverShow(tch)">
-                    Click to activate</el-button>
+                    安排课程</el-button>
                 </template>
                 <template #default>
-                  <addTchCourseFormVue />
+                  <addTchCourseFormVue :tid="tchList[tch].tid" />
                   <el-button @click="popoverClose(tch)">Cancel</el-button>
                 </template>
               </el-popover>
 
-              <!-- <el-drawer
-                v-model="drawer"
-                title="I am the title"
-                direction="rtl"
-              >
-              <addTchCourseFormVue />
-              </el-drawer>
-              <el-button
-                type="primary"
-                style="margin-left: 16px"
-                @click="drawer = true"
-              >
-                open
-              </el-button> -->
+             
             </div>
           </div>
         </li>
@@ -175,8 +104,11 @@ import addTchCourseFormVue from "./addTchCourseForm.vue";
 export default {
   components: { addTchCourseFormVue },
   name: "billing-card",
+  
   data() {
     return {
+      isLoading:false,
+
       popoverVisible:false,
       dialog: ref(false),
       drawer: false,
@@ -232,13 +164,13 @@ export default {
         for (var i in e.data.data) {
           courseArray.push(data[i]);
         }
-        console.log(courseArray);
 
         this.tchList[index].course = courseArray;
       });
     },
     // 选择系部
     selectDep() {
+      this.isLoading = true;
       axios({
         method: "post", //指定请求方式
         url: "http://localhost:8080/tchcoursemanage/findalltch?page=1&limit=1000", //请求接口（相对接口，后面会介绍到）
@@ -255,9 +187,12 @@ export default {
           this.tchList.push(data[i]);
           this.getTeachingCourse(data[i].tid, i);
         }
-
-        this.popoverShowControl = new Array(this.tchList.length).fill(false)
+        
+        this.popoverShowControl = new Array(this.tchList.length).fill(false);
+        
+        this.isLoading = false;
       });
+      
     },
   },
   mounted() {
@@ -265,7 +200,6 @@ export default {
       method: "post", //指定请求方式
       url: "http://localhost:8080/schoolmanage/findalldpm?page=1&limit=10", //请求接口（相对接口，后面会介绍到）
     }).then((e) => {
-      console.log(e);
 
       // 使用此以访问数组内容
       const data = e.data.data;
@@ -291,5 +225,8 @@ export default {
 }
 .dialog-footer button:first-child {
   margin-right: 10px;
+}
+body {
+    margin: 0;
 }
 </style>

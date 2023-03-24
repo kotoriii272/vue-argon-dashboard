@@ -10,10 +10,10 @@
     </div>
     <div class="row mt-3">
       <div class="col-md-5">
-        <AddTeacherCard />
+        <AddCourseCard />
       </div>
       <div class="col-md-7">
-        <TeacherCourseCard />
+        <CourseArrangeCard />
       </div>
     </div>
   </div>
@@ -27,11 +27,19 @@ import InvoiceCard from "./components/InvoiceCard.vue";
 import TeacherCourseCard from "./components/TeacherCourseCard.vue";
 import AddTeacherCard from "./components/AddTeacherCard.vue";
 
+import CourseArrangeCard from "./components/CourseArrangeCard.vue";
+
+
+import AddCourseCard from "./components/AddCourseCard.vue";
+
+
 export default {
   name: "ClassArrange",
   components: {
+    AddCourseCard,
     MasterCard,
     DefaultInfoCard,
+    CourseArrangeCard,
     PaymentCard,
     InvoiceCard,
     TeacherCourseCard,

@@ -6,6 +6,9 @@
         <div class="row">
           <div class="py-4 widget-calendar card container-fluid">
             <div class="row">
+              <div class="left-col">
+                <span>课次</span>
+              </div>
               <div class="my-col">
                 <span>周一</span>
               </div>
@@ -29,7 +32,10 @@
               </div>
             </div>
             <hr class="horizontal dark m-0" :class="dark" />
-            <div class="row mt-2">
+            <div class="row my-1">
+              <div class="left-col">
+                第一节
+              </div>
               <div class="my-col">
               </div>
               <div class="my-col"><argon-snackbar
@@ -50,8 +56,12 @@
               /></div>
               <div class="my-col"></div>
             </div>
-            
-            <div class="row mt-2">
+
+            <hr class="horizontal dark m-0" :class="dark" />
+            <div class="row my-1">
+              <div class="left-col">
+                第二节
+              </div>
               <div class="my-col"><argon-snackbar
                 title="线性代数"
                 date="上课地点：1103"
@@ -78,7 +88,11 @@
                 color="success"
               /></div>
             </div>
-            <div class="row mt-2">
+            <hr class="horizontal dark m-0" :class="dark" />
+            <div class="row my-1">
+              <div class="left-col">
+                第三节
+              </div>
               <div class="my-col">
               </div>
               <div class="my-col"><argon-snackbar
@@ -105,7 +119,12 @@
               /></div>
               <div class="my-col"></div>
             </div>
-            <div class="row mt-2">
+
+            <hr class="horizontal dark m-0" :class="dark" />
+            <div class="row my-1">              
+              <div class="left-col">
+                第四节
+              </div>
               <div class="my-col"><argon-snackbar
                 title="职业教育"
                 date="上课地点：1402"
@@ -132,7 +151,12 @@
                 color="success"
               /></div>
             </div>
-            <div class="row mt-2">
+            
+            <hr class="horizontal dark m-0" :class="dark" />
+            <div class="row my-1">
+              <div class="left-col">
+                第五节
+              </div>
               <div class="my-col">
               </div>
               <div class="my-col"><argon-snackbar
@@ -163,8 +187,6 @@
           </div>
         </div>
         
-        
-
 
         <div class="row mt-4">
           <div class="col-12">
@@ -221,7 +243,16 @@
 <style scoped>
 .my-col {
 /* width: 14.27%; */
-width: 14.2857%;
+width: 13.5%;
+border: 1px;
+border-color: black;
+}
+.left-col {
+/* width: 14.27%; */
+width: 5.5%;
+text-align: center;
+display: block;
+float: left;
 }
 </style>
 

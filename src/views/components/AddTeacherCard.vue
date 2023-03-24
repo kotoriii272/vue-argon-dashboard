@@ -8,9 +8,7 @@
       </div>
     </div>
     <div class="card-body pt-4 p-3">
-      <argon-alert>
-    <strong>Primary!</strong> This is a primary alert—check it out!
-  </argon-alert>
+      
       <div class="row mb-1">
         <h6>教师姓名：</h6>
         <ArgonInput
@@ -197,7 +195,6 @@ export default {
       method: "post", //指定请求方式
       url: "http://localhost:8080/schoolmanage/findalldpm?page=1&limit=10", //请求接口（相对接口，后面会介绍到）
     }).then((e) => {
-      console.log(e);
 
       const data = e.data.data;
       for (var i in e.data.data) {
