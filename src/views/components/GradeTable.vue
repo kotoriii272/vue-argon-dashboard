@@ -105,29 +105,7 @@
     name: "public-class-table",
     mounted() {
 
-      axios({
-        method: "post", //指定请求方式
-        url: "http://localhost:8080/admin/login", //请求接口（相对接口，后面会介绍到）
-        
-        params: {
-          username: "admin",
-          password: "123",
-          rememberMe: false,
-          code: "1",
-        },
-      });
-
-
-      var userInfo = this.$store.userInfo['0'];
-
-      axios({
-        method: "post", //指定请求方式
-        url: "http://localhost:8080/selAllExam?page=1&limit=10&sid=1302", //请求接口（相对接口，后面会介绍到）
-        
-      }).then((e) => {
-          
-          
-      });
+      
     }
   };
   </script>

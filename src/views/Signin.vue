@@ -148,7 +148,7 @@ export default {
           this.$store.character = e.data.message
           console.log(e.data.message)
 
-          this.$store.userInfo = e.data.userInfo
+          sessionStorage.setItem("userInfo", JSON.stringify(e.data.userInfo));
 
           that.$router.push({ path: "/dashboard-default" });
           

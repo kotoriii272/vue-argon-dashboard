@@ -10,6 +10,7 @@ import Signin from "../views/Signin.vue";
 import TeacherDashboard from "../views/TeacherDashboard.vue";
 import ClassArrange from "../views/ClassArrange.vue"
 import AssessResult from "../views/AssessResult.vue"
+import giveScoure from "../views/GiveScore.vue"
 
 const routes = [
   {
@@ -72,7 +73,11 @@ const routes = [
     name: "Signup",
     component: Signup,
   },
-  
+  {
+    path: "/giveScoure",
+    name: "giveScoure",
+    component: giveScoure,
+  }
 ];
 
 const router = createRouter({

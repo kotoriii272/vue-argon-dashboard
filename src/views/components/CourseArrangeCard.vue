@@ -45,16 +45,28 @@
               >排课</el-button
             > -->
 
-            <el-popover placement="right" :width="400" :trigger="click" :visible="popoverShowControl[scope.$index]">
-                <template #reference>
-                  <el-button  @click="popoverShow(scope.$index)">
-                    安排课程</el-button>
-                </template>
-                <template #default>
-                  <AddOneArrangeFormVue :arrInfo="scope.row" :classroomOptions="classroomOptions"/>
-                  <el-button @click="popoverClose(scope.$index)">Cancel</el-button>
-                </template>
-              </el-popover>
+            <el-popover
+              placement="right"
+              :width="400"
+              :trigger="click"
+              :visible="popoverShowControl[scope.$index]"
+            >
+              <template #reference>
+                <el-button @click="popoverShow(scope.$index)">
+                  安排课程</el-button
+                >
+              </template>
+              <template #default>
+                <AddOneArrangeFormVue
+                  @refreshList="selectDep"
+                  :arrInfo="scope.row"
+                  :classroomOptions="classroomOptions"
+                />
+                <el-button @click="popoverClose(scope.$index)"
+                  >Cancel</el-button
+                >
+              </template>
+            </el-popover>
 
             <el-button
               size="small"
@@ -67,15 +79,15 @@
       </el-table>
     </div>
 
-    <div style="width: 100%; text-align: right;">
+    <div style="width: 100%; text-align: right">
       <div class="mx-5">
-      <ArgonButton
-        color="success"
-        size="lg"
-        class="ms-auto"
-        v-on:click="submit"
-        >一键自动排课</ArgonButton
-      >
+        <ArgonButton
+          color="success"
+          size="lg"
+          class="ms-auto"
+          v-on:click="arrangeAllCourse"
+          >一键自动排课</ArgonButton
+        >
       </div>
     </div>
 
@@ -84,14 +96,36 @@
     </div>
 
     <div class="row mx-3 my-3" style="width: 95%">
-      <el-table :data="SetCourse" style="width: 100%" height="200" table-layout="auto">
+      <el-table
+        :data="SetCourse"
+        style="width: 100%"
+        height="200"
+        table-layout="auto"
+      >
         <el-table-column prop="tname" label="教师" />
         <el-table-column prop="classname" label="班级" />
         <el-table-column prop="cname" label="课程" />
         <el-table-column prop="room_code" label="教室" />
-        <el-table-column prop="timetableNum" label="时间" />
+        <el-table-column prop="weekday" label="周次" />
+        <el-table-column prop="timetableNum" label="节课" />
 
-        <el-table-column prop="address" label="操作" />
+        <el-table-column prop="address" label="操作">
+          <template #default="scope">
+            <!-- <el-button size="small" @click="handleEdit(scope.$index, scope.row)"
+              >排课</el-button
+            > -->
+            <el-popconfirm title="确认删除？"
+            @confirm="deleteArrange(scope.$index, scope.row)">
+              <template #reference>
+                <el-button
+                  size="small"
+                  type="danger"
+                  >删除安排</el-button
+                >
+              </template>
+            </el-popconfirm>
+          </template>
+        </el-table-column>
       </el-table>
     </div>
   </div>
@@ -103,8 +137,7 @@ import { reactive, ref } from "vue";
 import { ElDrawer, ElMessageBox } from "element-plus";
 import addTchCourseFormVue from "./addTchCourseForm.vue";
 import ArgonButton from "@/components/ArgonButton.vue";
-import AddOneArrangeFormVue from './AddOneArrangeForm.vue';
-
+import AddOneArrangeFormVue from "./AddOneArrangeForm.vue";
 
 export default {
   components: { addTchCourseFormVue, ArgonButton, AddOneArrangeFormVue },
@@ -117,7 +150,7 @@ export default {
       UnsetCourse: [],
       SetCourse: [],
 
-      popoverShowControl : [],
+      popoverShowControl: [],
 
       classroomOptions: [],
 
@@ -128,6 +161,18 @@ export default {
     };
   },
   methods: {
+    deleteArrange(index, row) {
+      axios({
+        method: "post", //指定请求方式
+        url: "http://localhost:8080/courseArrange/deleteArrange", //请求接口（相对接口，后面会介绍到）
+        params: {
+          id: row.id,
+        },
+      }).then((e) => {
+        this.selectDep();
+      });
+    },
+
     popoverShow(num) {
       this.popoverShowControl[num] = true;
     },
@@ -135,8 +180,24 @@ export default {
       this.popoverShowControl[num] = false;
     },
 
+    arrangeAllCourse() {
+      axios({
+        method: "post", //指定请求方式
+        url: "http://localhost:8080/courseArrange/arrangeAllCourse", //请求接口（相对接口，后面会介绍到）
+        params: {
+          did: this.departmentValue,
+        },
+      }).then((e) => {
+        this.UnsetCourse = e.data.msg;
+        this.isLoading = false;
+
+        this.selectDep();
+      });
+    },
+
     // 选择系部
     selectDep() {
+      console.log("selectDep");
       this.isLoading = true;
       axios({
         method: "post", //指定请求方式
@@ -182,7 +243,6 @@ export default {
       method: "post", //指定请求方式
       url: "http://localhost:8080/courseArrange/getUnsetCourse", //请求接口（相对接口，后面会介绍到）
     }).then((e) => {
-
       this.UnsetCourse = e.data.msg;
     });
 
@@ -190,22 +250,18 @@ export default {
       method: "post", //指定请求方式
       url: "http://localhost:8080/courseArrange/getAllClassroom", //请求接口（相对接口，后面会介绍到）
     }).then((e) => {
-
-      
       for (var i in e.data.msg) {
         this.classroomOptions.push({
-          value:e.data.msg[i].crid,
-          label:e.data.msg[i].room_code
-        })
+          value: e.data.msg[i].crid,
+          label: e.data.msg[i].room_code,
+        });
       }
-
     });
 
     axios({
       method: "post", //指定请求方式
       url: "http://localhost:8080/courseArrange/getSetCourse", //请求接口（相对接口，后面会介绍到）
     }).then((e) => {
-
       this.SetCourse = e.data.msg;
     });
   },

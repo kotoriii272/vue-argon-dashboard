@@ -182,23 +182,20 @@ export default {
       if (this.ifValidArrange) {
         axios({
           method: "post", //指定请求方式
-          url: "http://localhost:8080/tchcoursemanage/addonetchcourse", //请求接口（相对接口，后面会介绍到）
+          url: "http://localhost:8080/courseArrange/addOneArrange", //请求接口（相对接口，后面会介绍到）
           params: {
-            tid: this.tid,
-            mid: this.form.addTchCorMajor,
-            cid: this.form.addTchCorCourse,
-            classid: this.form.addTchCorClass,
-            gid: this.form.addTchCorGrade,
+            tcid:this.arrInfo.tcid,
+            crid:this.form.classroom,
+            weekday:this.form.weekday,
+            timetableNum:this.form.timeTableNumber
           },
         }).then((e) => {
-          if (e.data != true) {
-            this.duplicateTchForOneCourse = true;
-            this.duplicateTchForOneCourseName = e.data;
-          } else {
+          if (e.data) {
             this.submitSucceed = true;
-            this.duplicateTchForOneCourse = false;
-          }
+          } 
+          this.$emit("selectDep", "");
         });
+        this.$emit("refreshList", "");
       }
     },
   },
